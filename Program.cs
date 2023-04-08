@@ -1,4 +1,4 @@
-using DB;
+using AccountsWebApi.DataModel;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
