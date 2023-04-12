@@ -4,6 +4,7 @@ using AccountsWebApi.DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccountsWebApi.Migrations
 {
     [DbContext(typeof(AccountdbContext))]
-    partial class AccountdbContextModelSnapshot : ModelSnapshot
+    [Migration("20230408194951_Checking-Nullables")]
+    partial class CheckingNullables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,8 +69,8 @@ namespace AccountsWebApi.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TransactionType")
-                        .HasColumnType("int");
+                    b.Property<bool>("TransactionType")
+                        .HasColumnType("bit");
 
                     b.HasKey("TransactionId");
 

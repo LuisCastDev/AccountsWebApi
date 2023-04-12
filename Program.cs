@@ -1,7 +1,13 @@
 using AccountsWebApi.DataModel;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(policyBuilder =>
+    policyBuilder.AddDefaultPolicy(policy =>
+        policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
+);
 
 // Add services to the container.
 
@@ -16,6 +22,7 @@ builder.Services.AddDbContext<AccountdbContext>(options =>
 });
 
 var app = builder.Build();
+app.UseCors();
 using (var scope = app.Services.CreateScope()) 
 {
 
